@@ -1,0 +1,52 @@
+<!-- 
+    todo
+    1. have button change the text of the para
+    2. have button continuously change text of para for 5 seconds
+    3. figure out how to get dice image into html
+    4. figure out background image
+-->
+
+
+<html>
+
+<script>
+    let clearRandTimeout = null;
+
+    function changeText() {
+        var x = Math.floor(Math.random() * 10);
+        const elem = document.getElementById("rand_num_text");
+        elem.textContent = x;
+        elem.style.color = 'white';
+    }
+
+    function continuousChange() {
+        clearRandTimeout = setInterval(changeText, 10);
+    }
+
+    function stopContinuousChange() {
+        clearInterval(clearRandTimeout);
+    }
+
+
+</script>
+
+<head>
+    <title>Website Test</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body background="blue_background.jpeg">
+
+    <para id="rand_num_text" onclick="changeText()">
+        test
+    </para>
+    <button id="rand_button" onclick="continuousChange()">
+        repeat test
+    </button>
+    <button id="stop_rand_button" onclick="clearInterval(clearRandTimeout)">
+        stop test
+    </button>
+
+</body>
+
+</html>

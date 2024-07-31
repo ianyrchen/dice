@@ -1,0 +1,16 @@
+body {
+    background-image: url(blue_background.jpeg);
+    /*background-image: url(gif6.gif);
+    background-color: #191817ed;*/
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+para {
+    position: fixed;
+    bottom: 100;
+    right: 100;
+    width: 300px;
+    border: 3px solid #73AD21;
+
+}
