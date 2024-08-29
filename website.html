@@ -13,20 +13,27 @@
     let clearRandTimeout = null;
 
     function changeText() {
-        var x = Math.floor(Math.random() * 10);
+        //alert("hit");
+        var x = Math.floor(Math.random() * 6);
         const elem = document.getElementById("rand_num_text");
-        elem.textContent = x;
-        elem.style.color = 'white';
+        elem.innerText = x;
+        elem.style.color = 'red';
     }
 
     function continuousChange() {
-        clearRandTimeout = setInterval(changeText, 10);
+        clearRandTimeout = setInterval(changeText, 50);
     }
 
     function stopContinuousChange() {
         clearInterval(clearRandTimeout);
     }
 
+    function timedChange() {
+        setTimeout(() => {
+            stopContinuousChange();
+        }, 1500);
+        continuousChange();
+    }
 
 </script>
 
@@ -35,18 +42,29 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body background="blue_background.jpeg">
+<body>
 
-    <para id="rand_num_text" onclick="changeText()">
-        test
-    </para>
-    <button id="rand_button" onclick="continuousChange()">
-        repeat test
-    </button>
-    <button id="stop_rand_button" onclick="clearInterval(clearRandTimeout)">
-        stop test
-    </button>
+    <div style="height: 100%; width: 100%; display: flex; 
+                position: fixed; align-items: center; justify-content: center;">
+        <p id="rand_num_text" onclick="changeText()">
+            Sample text
+        </p>
 
+        <button id="rand_button" style="position: absolute; top: 50%; right: 60%; width: 10%; height: 40px;"
+            onclick="continuousChange()">
+            repeat
+        </button>
+
+        <button id="stop_rand_button" style="position: absolute; top: 50%; right: 30%; width: 10%; height: 40px;"
+            onclick="stopContinuousChange()">
+            stop
+        </button>
+
+        <button id="timed_rand_button" style="position: absolute; top: 70%; right: 45%; width: 10%; height: 40px;"
+            onclick="timedChange()">
+            timed
+        </button>
+    </div>
 </body>
 
 </html>

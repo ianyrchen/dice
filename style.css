@@ -1,16 +1,16 @@
 body {
-    background-image: url(blue_background.jpeg);
-    /*background-image: url(gif6.gif);
-    background-color: #191817ed;*/
+    background-image: url('/assets/blue_background.jpeg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    background-attachment: fixed;
+    /* Optional: Keeps the background fixed when scrolling */
 }
 
-para {
+.rand_num_wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
     position: fixed;
-    bottom: 100;
-    right: 100;
-    width: 300px;
-    border: 3px solid #73AD21;
-
+    align-items: center;
+    justify-content: center;
 }
