@@ -1,9 +1,7 @@
 <!-- 
     todo
-    1. have button change the text of the para
-    2. have button continuously change text of para for 5 seconds
-    3. figure out how to get dice image into html
-    4. figure out background image
+    1. figure out how to get dice image into html
+    2. figure out background image
 -->
 
 
@@ -12,16 +10,32 @@
 <script>
     let clearRandTimeout = null;
 
-    function changeText() {
+    function change() {
         //alert("hit");
-        var x = Math.floor(Math.random() * 6);
-        const elem = document.getElementById("rand_num_text");
-        elem.innerText = x;
-        elem.style.color = 'red';
+        var x = 1 + Math.floor(Math.random() * 5);
+        const img_elem = document.getElementById("dice_img");
+        if (x == 1) {
+            img_elem.src = 'assets/one.png';
+        }
+        else if (x == 2) {
+            img_elem.src = 'assets/two.png';
+        }
+        else if (x == 3) {
+            img_elem.src = 'assets/three.png';
+        }
+        else if (x == 4) {
+            img_elem.src = 'assets/four.png';
+        }
+        else if (x == 5) {
+            img_elem.src = 'assets/five.png';
+        }
+        else if (x == 6) {
+            img_elem.src = 'assets/six.png';
+        }
     }
 
     function continuousChange() {
-        clearRandTimeout = setInterval(changeText, 50);
+        clearRandTimeout = setInterval(change, 50);
     }
 
     function stopContinuousChange() {
@@ -29,9 +43,10 @@
     }
 
     function timedChange() {
+        stopContinuousChange();
         setTimeout(() => {
             stopContinuousChange();
-        }, 1500);
+        }, 1150);
         continuousChange();
     }
 
@@ -46,23 +61,23 @@
 
     <div style="height: 100%; width: 100%; display: flex; 
                 position: fixed; align-items: center; justify-content: center;">
-        <p id="rand_num_text" onclick="changeText()">
-            Sample text
-        </p>
 
-        <button id="rand_button" style="position: absolute; top: 50%; right: 60%; width: 10%; height: 40px;"
+        <img id="dice_img" src="assets/one.png" alt="Dice"
+            style="position: absolute; top: 25%; right: 45%; width: 10%; height: auto">
+
+        <button class="btn-1" id="rand_button" style="position: absolute; top: 50%; right: 60%"
             onclick="continuousChange()">
             repeat
         </button>
 
-        <button id="stop_rand_button" style="position: absolute; top: 50%; right: 30%; width: 10%; height: 40px;"
+        <button class="btn-1" id="stop_rand_button" style="position: absolute; top: 50%; right: 30%"
             onclick="stopContinuousChange()">
             stop
         </button>
 
-        <button id="timed_rand_button" style="position: absolute; top: 70%; right: 45%; width: 10%; height: 40px;"
+        <button class="btn-1" id="timed_rand_button" style="position: absolute; top: 50%; right: 45%"
             onclick="timedChange()">
-            timed
+            roll
         </button>
     </div>
 </body>
